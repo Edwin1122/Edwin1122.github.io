@@ -4,6 +4,7 @@ author: Edwin
 date: 2020-03-10 15:40:00 +0800
 categories: [Blogging, web]
 tags: [Jekyll]
+pin: true
 ---
 
 For a long time, I want to build my own blog site. Tried wordpress, on my own server. Static html pages with images. But it was costy and kink of waste of time.
