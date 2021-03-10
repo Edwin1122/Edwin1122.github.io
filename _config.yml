@@ -25,12 +25,12 @@ description: >-                        # used by seo meta and the atom feed
   and focuses on text presentation.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ''
+url: 'https://Edwin1122.github.io'
 
-author: your_full_name                  # change to your full name
+author: Edwin                  # change to your full name
 
 github:
-  username: github_username             # change to your github username
+  username: Edwin1122             # change to your github username
 
 twitter:
   username: twitter_username            # change to your twitter username
