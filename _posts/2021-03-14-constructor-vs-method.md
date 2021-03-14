@@ -126,20 +126,20 @@ class Child extends SuperClassDemo {
 public class Example { 
     Example() {} 
 } 
-在构造器的第一行，没有使用super，那么编译器也会自动加上，例如：
+// 在构造器的第一行，没有使用super，那么编译器也会自动加上，例如：
 public class TestConstructors { 
     TestConstructors() {} 
 } 
-编译器会加上代码，如下：
+//编译器会加上代码，如下：
 
 public class TestConstructors { 
     TestConstructors() { 
         super; 
     } 
 } 
-仔细想一下，就知道下面的代码
+// 仔细想一下，就知道下面的代码
 public class Example {} 
-经过会被编译器加代码形如：
+// 经过会被编译器加代码形如：
 
 public class Example { 
     Example() { 
