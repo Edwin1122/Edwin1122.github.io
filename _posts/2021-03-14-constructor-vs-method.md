@@ -51,7 +51,7 @@ tags: [constructor]
 
        构造器和方法使用关键字this有很大的区别。方法引用this指向正在执行方法的类的实例。静态方法不能使用this关键字，因为静态方法不属于类的实例，所以this也就没有什么东西去指向。构造器的this指向同一个类中，不同参数列表的另外一个构造器，我们看看下面的代码：
 
-``` JAVA
+``` java
 
 public class Platypus { 
     String name; 
@@ -80,7 +80,7 @@ public class Platypus {
 
 构造器和方法，都用关键字super指向超类，但是用的方法不一样。方法用这个关键字去执行被重载的超类中的方法。看下面的例子：
 
-``` JAVA
+``` java
 class Mammal { 
     void getBirthInfo() { 
         System.out.println("born alive."); 
@@ -101,7 +101,7 @@ class Platypus extends Mammal {
 
 构造器使用super去调用超类中的构造器。而且这行代码必须放在第一行，否则编译将出错。看下面的例子：
 
-``` JAVA
+``` java
 
 public class SuperClassDemo { 
     SuperClassDemo() {} 
@@ -121,7 +121,7 @@ class Child extends SuperClassDemo {
 编译器自动加入代码到构造器，对于这个，java程序员新手可能比较混淆。当我们写一个没有构造器的类，编译的时候，编译器会自动加上一个不带参数的构造器，例如：public class Example {}
 编译后将如下代码：
 
-``` JAVA
+``` java
 
 public class Example { 
     Example() {} 
@@ -154,7 +154,7 @@ public class Example {
 
 构造器是不能被继承的。子类可以继承超类的任何方法。看看下面的代码：
 
-``` JAVA
+``` java
 
 public class Example { 
     public void sayHi { 
@@ -172,8 +172,8 @@ public class SubClass extends Example {
 
 |主题|构造器|方法|
 |---|---|---|
-|功能                                     |        建立一个类的实例           |  java功能语句                   |
-|修饰                                     |   不能用abstract, final, native, static, or synchronized                |  能                   |
+|功能                                     | 建立一个类的实例           |  java功能语句                   |
+|修饰                                     | 不能用abstract, final, native, static, or synchronized                |  能                   |
 |返回类型                                 | 没有返回值，没有void                  | 有返回值，或者void                    |
 |命名                                     | 和类名相同；通常为名词，大写开头                  |通常代表一个动词的意思，小写开头                     |
 |this                                     |指向同一个类中另外一个构造器，在第一行                   |指向当前类的一个实例，不能用于静态方法                     |
