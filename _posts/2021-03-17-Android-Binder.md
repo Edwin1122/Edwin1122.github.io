@@ -2,7 +2,7 @@
 title: Anroid Binder机制
 author: Edwin
 date: 2021-03-17 10:50:43  +0800
-categories: [Anrodid]
+categories: [Anroid]
 tags: [Binder]
 ---
 
