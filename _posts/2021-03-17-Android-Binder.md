@@ -274,8 +274,8 @@ static int binder_ioctl_set_ctx_mgr(struct file *filp)
 }
 static struct binder_node *binder_new_node(struct binder_proc *proc, 
 
-                       binder_uintptr_t ptr,
-                       binder_uintptr_t cookie)
+    binder_uintptr_t ptr,
+    binder_uintptr_t cookie)
 
 {
 
@@ -317,8 +317,7 @@ static struct binder_node *binder_new_node(struct binder_proc *proc,
 ``` java
 
 //base\core\java\android\app\ContextImpl.java
-  private boolean bindServiceCommon(Intent service, ServiceConnection conn, int flags, Handler
-            handler, UserHandle user) {
+  private boolean bindServiceCommon(Intent service, ServiceConnection conn, int flags, Handler handler, UserHandle user) {
            ...
            //bindService 是通过 ActivityManager.getService() 去调用的
             int res = ActivityManager.getService().bindService(
@@ -340,15 +339,15 @@ public static IActivityManager getService() {
     }
 
     private static final Singleton<IActivityManager> IActivityManagerSingleton =
-            new Singleton<IActivityManager>() {
-                @Override
-                protected IActivityManager create() {
-                //要获取 IActivityManager 对象,就要通过 ServiceManager 去查询并获取
-                    final IBinder b = ServiceManager.getService(Context.ACTIVITY_SERVICE);
-                    final IActivityManager am = IActivityManager.Stub.asInterface(b);
-                    return am;
-                }
-            };
+        new Singleton<IActivityManager>() {
+            @Override
+            protected IActivityManager create() {
+            //要获取 IActivityManager 对象,就要通过 ServiceManager 去查询并获取
+                final IBinder b = ServiceManager.getService(Context.ACTIVITY_SERVICE);
+                final IActivityManager am = IActivityManager.Stub.asInterface(b);
+                return am;
+            }
+        };
 // base\core\java\android\os\ServiceManager.java
 
 //通过一个 服务的名字去获取对应的 Binder 
@@ -434,8 +433,7 @@ sp<IBinder> ProcessState::getStrongProxyForHandle(int32_t handle)
             //所以通过简单的远程访问确定其已经注册否则 
             //ServiceManager 就不能使用。
                 Parcel data;
-                status_t status = IPCThreadState::self()->transact(
-                        0, IBinder::PING_TRANSACTION, data, nullptr, 0);
+                status_t status = IPCThreadState::self()->transact(0, IBinder::PING_TRANSACTION, data, nullptr, 0);
                 if (status == DEAD_OBJECT)
                    return nullptr;
             }
@@ -456,7 +454,6 @@ sp<IServiceManager> defaultServiceManager()
 {
 
     if (gDefaultServiceManager != nullptr) return gDefaultServiceManager;
-
     {
         AutoMutex _l(gDefaultServiceManagerLock);
         while (gDefaultServiceManager == nullptr) {
@@ -466,7 +463,6 @@ sp<IServiceManager> defaultServiceManager()
                 sleep(1);
         }
     }
-
     return gDefaultServiceManager;
 
 }
@@ -477,7 +473,7 @@ sp<IServiceManager> defaultServiceManager()
 
 总结
 
-一般跨进程的通信首先要需要通过 ServiceManager 获取对方的代理接口才能通信,但是 对于 ServiceManager 自己的代理接口的获取过程不需要跨进程,因为其引用号已知 为 0.
+一般跨进程的通信首先要需要通过 ServiceManager 获取对方的代理接口才能通信,但是 对于 ServiceManager 自己的代理接口的获取过程不需要跨进程,因为其引用号已知为 0.
 
 如果是同一个进程的的通信,客户端 透过 Binder 驱动向 服务端 请求一个 Binder 代理对象时，Binder 驱动发现它们是同一个进程，就向 客户端 进程返回一个 Binder 本地对象，而不是 Binder 代理对象。
 
@@ -495,7 +491,6 @@ private static IServiceManager getIServiceManager() {
             return sServiceManager;
         }
         // Find the service manager
-        
         sServiceManager = ServiceManagerNative
                 .asInterface(Binder.allowBlocking(BinderInternal.getContextObject()));
         return sServiceManager;
@@ -635,7 +630,7 @@ static void binder_transaction(struct binder_proc *proc,
 
 [Android Bander设计与实现 - 设计篇](https://blog.csdn.net/universus/article/details/6211589#t1)
 
-[一篇文章了解相见恨晚的 Android Binder 进程间通讯机制]([https://link](https://blog.csdn.net/luoshengyang/article/details/6618363))
+[一篇文章了解相见恨晚的 Android Binder 进程间通讯机制](https://blog.csdn.net/luoshengyang/article/details/6618363)
 
 [Android进程间通信（IPC）机制Binder简要介绍和学习计划](https://blog.csdn.net/luoshengyang/article/details/6618363)
 
