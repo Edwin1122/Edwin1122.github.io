@@ -16,3 +16,5 @@ In the follwing days, I'll try to work out a better style for these pages. Hope 
 And Hope one day, I can write more technical related articles here.
 
 What's more, if we can build a comment system on this site and counting page views, that would be great.
+
+New hello from 2023.
